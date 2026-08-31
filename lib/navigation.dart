@@ -1,0 +1,113 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:news/features/auth/presentation/screen/login/cubit/login_cubit.dart';
+import 'package:news/features/auth/presentation/screen/login/login_screen.dart';
+import 'package:news/features/auth/presentation/screen/register/cubit/register_cubit.dart';
+import 'package:news/features/auth/presentation/screen/register/register_screen.dart';
+import 'package:news/features/news/domain/entities/article.dart';
+import 'package:news/features/news/presentation/detail/detail_screen.dart';
+import 'package:news/features/news/presentation/list/cubit/list_cubit.dart';
+import 'package:news/features/news/presentation/list/list_screen.dart';
+import 'package:news/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:news/features/settings/presentation/screen/settings_screen.dart';
+import 'package:news/injection.dart';
+
+enum Nav {
+  home("/"),
+  login("/login"),
+  register("/register"),
+  settings("/settings"),
+  detail("/detail");
+
+  final String path;
+
+  const Nav(this.path);
+}
+
+class Navigation {
+  final SettingsCubit settings;
+
+  Navigation(this.settings);
+
+  late final router = GoRouter(
+    initialLocation: Nav.home.path,
+    refreshListenable: GoRouterRefreshStream(settings.stream),
+    redirect: (context, route) {
+      final isAuthenticated = settings.state.isAuth;
+      final isGoingToLogin = route.matchedLocation == Nav.login.path;
+      final isGoingToRegister = route.matchedLocation == Nav.register.path;
+
+      // Jika belum login dan tidak menuju login atau register arahkan ke login
+      if (!isAuthenticated && !(isGoingToLogin || isGoingToRegister)) {
+        return Nav.login.path;
+      }
+
+      // Jika sudah login dan menuju login atau register arahkan ke home
+      if (isAuthenticated && (isGoingToLogin || isGoingToRegister)) {
+        return Nav.home.path;
+      }
+
+      // Lanjutkan navigasi
+      return null;
+    },
+    routes: [
+      GoRoute(
+        path: Nav.home.path,
+        name: Nav.home.name,
+        builder: (context, state) => BlocProvider(
+          create: (context) => inject<ListCubit>(),
+          child: const ListScreen(),
+        ),
+      ),
+      GoRoute(
+        path: Nav.login.path,
+        name: Nav.login.name,
+        builder: (context, state) => BlocProvider(
+          create: (context) => inject<LoginCubit>(),
+          child: const LoginScreen(),
+        ),
+      ),
+      GoRoute(
+        path: Nav.register.path,
+        name: Nav.register.name,
+        builder: (context, state) => BlocProvider(
+          create: (context) => inject<RegisterCubit>(),
+          child: const RegisterScreen(),
+        ),
+      ),
+      GoRoute(
+        path: Nav.settings.path,
+        name: Nav.settings.name,
+        builder: (context, state) => const SettingsScreen(),
+      ),
+      GoRoute(
+        path: Nav.detail.path,
+        name: Nav.detail.name,
+        builder: (context, state) => DetailScreen(
+          article: state.extra as Article,
+        ),
+      ),
+    ],
+  );
+}
+
+class GoRouterRefreshStream extends ChangeNotifier {
+  late final StreamSubscription _subscription;
+
+  GoRouterRefreshStream(Stream stream) {
+    _subscription = stream.asBroadcastStream().listen(
+      (dynamic _) {
+        notifyListeners();
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
+  }
+}

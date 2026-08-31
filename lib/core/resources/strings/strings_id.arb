@@ -1,0 +1,36 @@
+{
+  "lbl_english": "Inggris",
+  "lbl_indonesia": "Indonesia",
+  "lbl_language": "Bahasa:",
+  "lbl_theme": "Tema:",
+  "lbl_welcome": "Selamat Datang",
+  "lbl_username": "Nama Pengguna",
+  "lbl_password": "Kata Sandi",
+  "lbl_confirm_password": "Konfirmasi Kata Sandi",
+  "lbl_please_wait": "Harap tunggu...",
+
+  "hint_username": "Masukkan Nama Pengguna",
+  "hint_password": "Masukkan Kata Sandi",
+
+  "btn_login": "Masuk",
+  "btn_register": "Daftar",
+
+  "msg_username_empty": "Nama pengguna kosong",
+  "msg_username_not_valid": "Nama pengguna minimal 3 karakter",
+  "msg_password_empty": "Kata sandi kosong",
+  "msg_password_not_valid": "Kata sandi minimal 5 karakter",
+  "msg_confim_password_empty": "Konfirmasi kata sandi kosong",
+  "msg_confim_password_not_match": "Kata sandi tidak sesuai",
+  "msg_server_failure": "Server gagal",
+  "msg_login_success": "Selamat datang {username}...",
+  "@msg_login_success": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "msg_login_failure": "Nama pengguna atau kata sandi tidak sesuai",
+  "msg_register_success": "Daftar berhasil",
+  "msg_register_failure": "Nama pengguna sudah terdaftar"
+}

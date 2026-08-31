@@ -1,0 +1,7 @@
+arb-dir: lib/core/resources/strings
+output-dir: lib/core/resources/strings/generated
+output-localization-file: strings.dart
+template-arb-file: strings_en.arb
+output-class: Strings
+untranslated-messages-file: lib/core/resources/strings/untranslated_messages.txt
+preferred-supported-locales: [en, id]

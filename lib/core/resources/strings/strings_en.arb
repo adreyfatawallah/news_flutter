@@ -1,0 +1,36 @@
+{
+  "lbl_english": "English",
+  "lbl_indonesia": "Indonesia",
+  "lbl_language": "Language:",
+  "lbl_theme": "Theme:",
+  "lbl_welcome": "Welcome",
+  "lbl_username": "Username",
+  "lbl_password": "Password",
+  "lbl_confirm_password": "Confirm Password",
+  "lbl_please_wait": "Please wait...",
+
+  "hint_username": "Enter Username",
+  "hint_password": "Enter Password",
+
+  "btn_login": "Login",
+  "btn_register": "Register",
+
+  "msg_username_empty": "Username is empty",
+  "msg_username_not_valid": "Username must be at least 3 characters",
+  "msg_password_empty": "Password is empty",
+  "msg_password_not_valid": "Password must be at least 5 characters",
+  "msg_confim_password_empty": "Confirm password empty",
+  "msg_confim_password_not_match": "Password not match",
+  "msg_server_failure": "Server failure",
+  "msg_login_success": "Welcome {username}...",
+  "@msg_login_success": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "msg_login_failure": "Username or password does not match",
+  "msg_register_success": "Register success",
+  "msg_register_failure": "Username already exist"
+}
