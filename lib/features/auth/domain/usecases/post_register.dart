@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:news/core/utils/error/failure.dart';
+import 'package:news/core/error/failure.dart';
 import 'package:news/core/utils/mixin/validation_mixin.dart';
-import 'package:news/core/utils/usecase/usecase.dart';
+import 'package:news/core/usecase/usecase.dart';
 import 'package:news/features/auth/domain/repositories/auth_repository.dart';
 
 class PostRegister with ValidationMixin implements UseCase<bool, RegisterParams> {

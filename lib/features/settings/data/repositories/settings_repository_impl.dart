@@ -7,9 +7,9 @@ class SettingsRepositoryImpl implements SettingsRepository {
   SettingsRepositoryImpl({required this._localDatasource});
 
   @override
-  Future<void> saveTheme(String theme) async {
+  Future<void> changeTheme(String theme) async {
     try {
-      await _localDatasource.saveTheme(theme);
+      await _localDatasource.changeTheme(theme);
     } catch (e) {
       return;
     }
@@ -25,9 +25,9 @@ class SettingsRepositoryImpl implements SettingsRepository {
   }
 
   @override
-  Future<void> saveLanguage(String language) async {
+  Future<void> changeLanguage(String language) async {
     try {
-      await _localDatasource.saveLanguage(language);
+      await _localDatasource.changeLanguage(language);
     } catch (e) {
       return;
     }

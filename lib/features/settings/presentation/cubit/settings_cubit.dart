@@ -38,12 +38,12 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   void changeLanguage(String language) async {
-    await _repository.saveLanguage(language);
+   await  _repository.changeLanguage(language);
     emit(state.copyWith(locale: Locale(language)));
   }
 
   void changeTheme(Brightness theme) async {
-    await _repository.saveTheme(theme.name);
+    await _repository.changeTheme(theme.name);
     emit(state.copyWith(theme: theme));
   }
 

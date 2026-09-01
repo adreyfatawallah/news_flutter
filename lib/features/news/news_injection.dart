@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:news/config/remote/network.dart';
+import 'package:news/core/network/dio.dart';
 import 'package:news/features/news/data/datasources/news_remote_datasource.dart';
 import 'package:news/features/news/data/repositories/news_repository_impl.dart';
 import 'package:news/features/news/domain/repositories/news_repository.dart';

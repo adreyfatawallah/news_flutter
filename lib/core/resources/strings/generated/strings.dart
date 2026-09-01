@@ -214,7 +214,7 @@ abstract class Strings {
   /// No description provided for @msg_server_failure.
   ///
   /// In en, this message translates to:
-  /// **'Server failure'**
+  /// **'Failure connect to the server'**
   String get msg_server_failure;
 
   /// No description provided for @msg_login_success.

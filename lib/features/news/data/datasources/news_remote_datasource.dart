@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:news/core/utils/error/exception.dart';
+import 'package:news/core/error/exception.dart';
 import 'package:news/features/news/core/api.dart';
 import 'package:news/features/news/core/base_response.dart';
 import 'package:news/features/news/data/models/article_model.dart';
@@ -22,8 +22,8 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
       final result = await _dio.get(
         Api.topHeadlines,
         queryParameters: {
-          "sources": "bbc-news",
-          "apiKey": Api.apiKey,
+          'sources': 'bbc-news',
+          'apiKey': Api.apiKey,
         },
       );
 
@@ -32,7 +32,7 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
         return rawList.map((item) => ArticleModel.fromJson(item)).toList();
       });
 
-      if (response.status == "ok" && response.data != null) {
+      if (response.status == 'ok' && response.data != null) {
         return response.data!.toList();
       }
 

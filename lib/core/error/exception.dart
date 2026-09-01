@@ -5,7 +5,7 @@ class ServerException implements Exception {
 
   @override
   String toString() {
-    return "ServerException: $error";
+    return 'ServerException: $error';
   }
 }
 
@@ -16,6 +16,6 @@ class LocalException implements Exception {
 
   @override
   String toString() {
-    return "LocalException: $error";
+    return 'LocalException: $error';
   }
 }

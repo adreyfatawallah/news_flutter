@@ -21,7 +21,7 @@
   "msg_password_not_valid": "Kata sandi minimal 5 karakter",
   "msg_confim_password_empty": "Konfirmasi kata sandi kosong",
   "msg_confim_password_not_match": "Kata sandi tidak sesuai",
-  "msg_server_failure": "Server gagal",
+  "msg_server_failure": "Gagal terhubung ke server",
   "msg_login_success": "Selamat datang {username}...",
   "@msg_login_success": {
     "placeholders": {

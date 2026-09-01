@@ -33,7 +33,7 @@ class _ListScreenState extends State<ListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("News"),
+        title: const Text('News'),
         actions: [
           IconButton(
             onPressed: () {
@@ -66,7 +66,7 @@ class _ListScreenState extends State<ListScreen> {
                     physics: const AlwaysScrollableScrollPhysics(),
                     children: [
                       SizedBox(height: 200.h),
-                      const Center(child: Text("Tidak ada berita.")),
+                      const Center(child: Text('Tidak ada berita.')),
                     ],
                   );
                 }
@@ -91,7 +91,7 @@ class _ListScreenState extends State<ListScreen> {
                   SizedBox(height: 200.h),
                   Center(
                     child: MyFilledButton(
-                      label: "Coba Lagi",
+                      label: 'Coba Lagi',
                       onPressed: () => _refreshKey.currentState?.show(),
                     ),
                   ),

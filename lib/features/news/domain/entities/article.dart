@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-class Article with Equatable {
+class Article {
   final String author;
   final String title;
   final String desc;
@@ -16,7 +14,4 @@ class Article with Equatable {
     required this.image,
     required this.date,
   });
-
-  @override
-  List<Object?> get props => [author, title, desc, url, image, date];
 }

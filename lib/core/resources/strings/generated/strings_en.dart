@@ -66,7 +66,7 @@ class StringsEn extends Strings {
   String get msg_confim_password_not_match => 'Password not match';
 
   @override
-  String get msg_server_failure => 'Server failure';
+  String get msg_server_failure => 'Failure connect to the server';
 
   @override
   String msg_login_success(String username) {

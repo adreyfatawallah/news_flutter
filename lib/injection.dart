@@ -9,7 +9,7 @@ final inject = GetIt.instance;
 Future<void> setupInjection() async {
   inject.registerLazySingleton(() => Navigation(inject()));
 
-  authInjection();
+  await authInjection();
   newsInjection();
-  settingsInjection();
+  await settingsInjection();
 }

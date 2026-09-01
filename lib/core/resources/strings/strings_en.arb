@@ -21,7 +21,7 @@
   "msg_password_not_valid": "Password must be at least 5 characters",
   "msg_confim_password_empty": "Confirm password empty",
   "msg_confim_password_not_match": "Password not match",
-  "msg_server_failure": "Server failure",
+  "msg_server_failure": "Failure connect to the server",
   "msg_login_success": "Welcome {username}...",
   "@msg_login_success": {
     "placeholders": {

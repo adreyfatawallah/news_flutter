@@ -20,12 +20,12 @@ class LanguageWidget extends StatelessWidget {
     final listLanguage = [
       ItemLanguage(
         value: MyConst.langCodeEn,
-        icon: MyIcons.getFlag("en"),
+        icon: MyIcons.getFlag('en'),
         label: context.getString.lbl_english,
       ),
       ItemLanguage(
         value: MyConst.langCodeId,
-        icon: MyIcons.getFlag("id"),
+        icon: MyIcons.getFlag('id'),
         label: context.getString.lbl_indonesia,
       ),
     ];

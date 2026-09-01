@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:news/core/utils/error/failure.dart';
-import 'package:news/core/utils/usecase/usecase.dart';
+import 'package:news/core/error/failure.dart';
+import 'package:news/core/usecase/usecase.dart';
 import 'package:news/features/news/domain/entities/article.dart';
 import 'package:news/features/news/domain/repositories/news_repository.dart';
 

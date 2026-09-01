@@ -8,7 +8,7 @@ import 'package:news/core/widgets/filled_button.dart';
 import 'package:news/core/widgets/loading_dialog.dart';
 import 'package:news/core/widgets/outlined_button.dart';
 import 'package:news/core/widgets/top_notification.dart';
-import 'package:news/features/auth/domain/usecases/post_login.dart';
+import 'package:news/features/auth/domain/usecases/login.dart';
 import 'package:news/features/auth/presentation/screen/login/cubit/login_cubit.dart';
 import 'package:news/features/auth/presentation/widgets/language_widget.dart';
 import 'package:news/features/auth/presentation/widgets/toggle_theme.dart';
@@ -75,8 +75,8 @@ class _LoginScreenState extends State<LoginScreen> {
         listener: (context, state) {
           state.maybeWhen(
             loading: () => LoadingDialog.show(context),
-            success: (isSuccess) =>
-                _onLoginResult(context, isSuccess: isSuccess),
+            success: (login) =>
+                _onLoginResult(context, isSuccess: login.isSuccess),
             failure: () => _onLoginResult(context, isFailure: true),
             orElse: () {},
           );
@@ -163,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               final isFormInValid =
                                   isUsernameEmpty || isPasswordEmpty;
 
-                              final action =
+                              final actionLogin =
                                   isFormInValid ||
                                       state != const LoginState.initial()
                                   ? null
@@ -179,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               return MyOutlinedButton(
                                 label: context.getString.btn_login,
                                 isFillMaxWidth: true,
-                                onPressed: action,
+                                onPressed: actionLogin,
                               );
                             },
                           );

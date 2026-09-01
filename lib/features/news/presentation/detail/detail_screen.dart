@@ -61,7 +61,7 @@ class DetailScreen extends StatelessWidget {
                 4.horizontalSpace,
                 Expanded(
                   child: Text(
-                    article.author.isEmpty ? "Unknown" : article.author,
+                    article.author.isEmpty ? 'Unknown' : article.author,
                     style: context.textTheme.bodySmall?.copyWith(
                       color: context.colorScheme.primary,
                     ),
@@ -82,15 +82,15 @@ class DetailScreen extends StatelessWidget {
             ),
             24.verticalSpace,
             MyFilledButton(
-              label: "Baca Selengkapnya",
+              label: 'Baca Selengkapnya',
               isFillMaxWidth: true,
               onPressed: () async {
-                debugPrint("Launching URL: ${article.url}");
+                debugPrint('Launching URL: ${article.url}');
                 final url = Uri.tryParse(article.url);
                 if (url == null) {
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("URL tidak valid")),
+                      const SnackBar(content: Text('URL tidak valid')),
                     );
                   }
                   return;
@@ -98,10 +98,10 @@ class DetailScreen extends StatelessWidget {
                 try {
                   await launchUrl(url, mode: LaunchMode.externalApplication);
                 } catch (e) {
-                  debugPrint("Could not launch $url: $e");
+                  debugPrint('Could not launch $url: $e');
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Tidak dapat membuka link")),
+                      const SnackBar(content: Text('Tidak dapat membuka link')),
                     );
                   }
                 }

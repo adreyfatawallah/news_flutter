@@ -16,11 +16,11 @@ import 'package:news/features/settings/presentation/screen/settings_screen.dart'
 import 'package:news/injection.dart';
 
 enum Nav {
-  home("/"),
-  login("/login"),
-  register("/register"),
-  settings("/settings"),
-  detail("/detail");
+  home('/'),
+  login('/login'),
+  register('/register'),
+  settings('/settings'),
+  detail('/detail');
 
   final String path;
 
@@ -95,15 +95,17 @@ class Navigation {
 }
 
 class GoRouterRefreshStream extends ChangeNotifier {
-  late final StreamSubscription _subscription;
 
-  GoRouterRefreshStream(Stream stream) {
+  GoRouterRefreshStream(Stream<dynamic> stream) {
+    notifyListeners();
     _subscription = stream.asBroadcastStream().listen(
-      (dynamic _) {
+          (dynamic _) {
         notifyListeners();
       },
     );
   }
+
+  late final StreamSubscription<dynamic> _subscription;
 
   @override
   void dispose() {

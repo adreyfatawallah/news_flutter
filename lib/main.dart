@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:news/config/local/database.dart';
+import 'package:hive_ce_flutter/adapters.dart';
+import 'package:news/hive_registrar.g.dart';
 import 'package:news/injection.dart';
 
 import 'app.dart';
@@ -8,7 +9,8 @@ import 'app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await BoxMixin.init();
+  await Hive.initFlutter();
+  Hive.registerAdapters();
 
   await setupInjection();
 

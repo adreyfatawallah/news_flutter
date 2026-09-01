@@ -66,7 +66,7 @@ class StringsId extends Strings {
   String get msg_confim_password_not_match => 'Kata sandi tidak sesuai';
 
   @override
-  String get msg_server_failure => 'Server gagal';
+  String get msg_server_failure => 'Gagal terhubung ke server';
 
   @override
   String msg_login_success(String username) {
