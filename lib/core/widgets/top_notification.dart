@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TopNotification {
+  TopNotification._();
+
   /// Panggil fungsi ini dari mana saja untuk menampilkan notifikasi dari atas
   static void show(BuildContext context, String message, {bool isError = false, VoidCallback? onDismiss}) {
     final overlayState = Overlay.of(context);

@@ -1,4 +1,5 @@
 import 'package:hive_ce/hive.dart';
+import 'package:news/core/error/exception.dart';
 import 'package:news/features/auth/data/models/login_model.dart';
 import 'package:news/features/auth/data/models/user/user_model.dart';
 import 'package:news/features/auth/domain/usecases/login.dart';
@@ -34,7 +35,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
         UserModel(id: id, username: username, password: password),
       );
     } catch (e) {
-      throw Exception(e);
+      throw LocalException(e.toString());
     }
   }
 
@@ -43,7 +44,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     try {
       return _userBox.get(username);
     } catch (e) {
-      throw Exception(e);
+      throw LocalException(e.toString());
     }
   }
 
@@ -66,7 +67,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
 
       return LoginModel(isSuccess: true);
     } catch (e) {
-      throw Exception(e);
+      throw LocalException(e.toString());
     }
   }
 
@@ -75,7 +76,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     try {
       return _userBox.values.toList();
     } catch (e) {
-      throw Exception(e);
+      throw LocalException(e.toString());
     }
   }
 }

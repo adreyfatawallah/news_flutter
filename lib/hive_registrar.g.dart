@@ -4,15 +4,18 @@
 
 import 'package:hive_ce/hive_ce.dart';
 import 'package:news/features/auth/data/models/user/user_model.dart';
+import 'package:news/features/news/data/models/news/news_model.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
+    registerAdapter(NewsModelAdapter());
     registerAdapter(UserModelAdapter());
   }
 }
 
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
+    registerAdapter(NewsModelAdapter());
     registerAdapter(UserModelAdapter());
   }
 }

@@ -7,7 +7,7 @@ import 'package:news/core/utils/const.dart';
 import 'package:news/core/utils/ext/context_ext.dart';
 import 'package:news/core/widgets/filled_button.dart';
 import 'package:news/core/widgets/network_image.dart';
-import 'package:news/features/news/domain/entities/article.dart';
+import 'package:news/features/news/domain/entities/news_entity.dart';
 import 'package:news/features/news/presentation/list/cubit/list_cubit.dart';
 import 'package:news/navigation.dart';
 
@@ -107,7 +107,7 @@ class _ListScreenState extends State<ListScreen> {
     );
   }
 
-  Widget _itemNews(Article item) {
+  Widget _itemNews(NewsEntity item) {
     return InkWell(
       onTap: () {
         context.push(Nav.detail.path, extra: item);

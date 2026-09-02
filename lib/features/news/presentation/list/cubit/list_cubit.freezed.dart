@@ -125,7 +125,7 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<Article> news)?  success,TResult Function()?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<NewsEntity> news)?  success,TResult Function()?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -149,7 +149,7 @@ return failure();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<Article> news)  success,required TResult Function()  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<NewsEntity> news)  success,required TResult Function()  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loading():
@@ -169,7 +169,7 @@ return failure();}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<Article> news)?  success,TResult? Function()?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<NewsEntity> news)?  success,TResult? Function()?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -251,11 +251,11 @@ String toString() {
 
 
 class _Success implements ListState {
-  const _Success(final  List<Article> news): _news = news;
+  const _Success(final  List<NewsEntity> news): _news = news;
   
 
- final  List<Article> _news;
- List<Article> get news {
+ final  List<NewsEntity> _news;
+ List<NewsEntity> get news {
   if (_news is EqualUnmodifiableListView) return _news;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_news);
@@ -292,7 +292,7 @@ abstract mixin class _$SuccessCopyWith<$Res> implements $ListStateCopyWith<$Res>
   factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) = __$SuccessCopyWithImpl;
 @useResult
 $Res call({
- List<Article> news
+ List<NewsEntity> news
 });
 
 
@@ -312,7 +312,7 @@ class __$SuccessCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? news = null,}) {
   return _then(_Success(
 null == news ? _self._news : news // ignore: cast_nullable_to_non_nullable
-as List<Article>,
+as List<NewsEntity>,
   ));
 }
 

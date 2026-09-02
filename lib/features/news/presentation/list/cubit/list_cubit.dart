@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:news/core/usecase/usecase.dart';
-import 'package:news/features/news/domain/entities/article.dart';
+import 'package:news/features/news/domain/entities/news_entity.dart';
 import 'package:news/features/news/domain/usecases/get_news.dart';
 
 part 'list_cubit.freezed.dart';
@@ -10,7 +10,7 @@ part 'list_cubit.freezed.dart';
 sealed class ListState with _$ListState {
   const factory ListState.initial() = _Initial;
   const factory ListState.loading() = _Loading;
-  const factory ListState.success(List<Article> news) = _Success;
+  const factory ListState.success(List<NewsEntity> news) = _Success;
   const factory ListState.failure() = _Failure;
 }
 

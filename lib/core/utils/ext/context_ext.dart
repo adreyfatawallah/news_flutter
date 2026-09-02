@@ -15,7 +15,9 @@ extension ContextExt on BuildContext {
 
   Size get screenSize => MediaQuery.of(this).size;
   
-  ScaffoldMessengerState get snackbar => ScaffoldMessenger.of(this);
+  void showSnackbar(String message) {
+    ScaffoldMessenger.of(this).showSnackBar(SnackBar(content: Text(message)));
+  }
 
   String formatDate(String date) {
     try {

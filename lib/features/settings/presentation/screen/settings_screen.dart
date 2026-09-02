@@ -6,10 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:news/core/resources/dimens.dart';
 import 'package:news/core/resources/icons.dart';
 import 'package:news/core/resources/styles/button_style.dart';
-import 'package:news/core/utils/const.dart';
 import 'package:news/core/utils/ext/context_ext.dart';
 import 'package:news/core/widgets/language_widget.dart';
-import 'package:news/features/auth/domain/entities/item_language.dart';
 import 'package:news/core/widgets/toggle_theme.dart';
 import 'package:news/features/settings/presentation/cubit/settings_cubit.dart';
 
@@ -18,19 +16,6 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final listLanguage = [
-      ItemLanguage(
-        value: MyConst.langCodeEn,
-        flag: MyIcons.getFlag('en'),
-        label: context.getString.lbl_english,
-      ),
-      ItemLanguage(
-        value: MyConst.langCodeId,
-        flag: MyIcons.getFlag('id'),
-        label: context.getString.lbl_indonesia,
-      ),
-    ];
-
     return Scaffold(
       appBar: AppBar(
         title: Text(context.getString.lbl_setting),

@@ -7,7 +7,7 @@ import 'package:news/features/auth/presentation/screen/login/cubit/login_cubit.d
 import 'package:news/features/auth/presentation/screen/login/login_screen.dart';
 import 'package:news/features/auth/presentation/screen/register/cubit/register_cubit.dart';
 import 'package:news/features/auth/presentation/screen/register/register_screen.dart';
-import 'package:news/features/news/domain/entities/article.dart';
+import 'package:news/features/news/domain/entities/news_entity.dart';
 import 'package:news/features/news/presentation/detail/detail_screen.dart';
 import 'package:news/features/news/presentation/list/cubit/list_cubit.dart';
 import 'package:news/features/news/presentation/list/list_screen.dart';
@@ -32,9 +32,14 @@ class Navigation {
 
   Navigation(this.settings);
 
+  // Fallback untuk menjaga data artikel saat router refresh/rebuild
+  NewsEntity? _selectedNews;
+
   late final router = GoRouter(
     initialLocation: Nav.home.path,
-    refreshListenable: GoRouterRefreshStream(settings.stream),
+    refreshListenable: GoRouterRefreshStream(
+      settings.stream.map((state) => state.isAuth).distinct(),
+    ),
     redirect: (context, route) {
       final isAuthenticated = settings.state.isAuth;
       final isGoingToLogin = route.matchedLocation == Nav.login.path;
@@ -86,9 +91,21 @@ class Navigation {
       GoRoute(
         path: Nav.detail.path,
         name: Nav.detail.name,
-        builder: (context, state) => DetailScreen(
-          article: state.extra as Article,
-        ),
+        builder: (context, state) {
+          // Jika extra ada, simpan ke fallback
+          if (state.extra is NewsEntity) {
+            _selectedNews = state.extra as NewsEntity;
+          }
+
+          // Gunakan fallback jika extra null (misal saat rebuild/theme change)
+          if (_selectedNews == null) {
+            return const Scaffold(
+              body: Center(child: Text('Error: Article data not found')),
+            );
+          }
+
+          return DetailScreen(news: _selectedNews!);
+        },
       ),
     ],
   );
@@ -97,7 +114,6 @@ class Navigation {
 class GoRouterRefreshStream extends ChangeNotifier {
 
   GoRouterRefreshStream(Stream<dynamic> stream) {
-    notifyListeners();
     _subscription = stream.asBroadcastStream().listen(
           (dynamic _) {
         notifyListeners();

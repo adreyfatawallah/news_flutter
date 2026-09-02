@@ -1,4 +1,4 @@
-class Article {
+class NewsEntity {
   final String author;
   final String title;
   final String desc;
@@ -6,7 +6,7 @@ class Article {
   final String image;
   final String date;
 
-  Article({
+  NewsEntity({
     required this.author,
     required this.title,
     required this.desc,

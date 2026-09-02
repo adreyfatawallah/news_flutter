@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:news/core/error/exception.dart';
 import 'package:news/core/network/api.dart';
 import 'package:news/core/network/base_response.dart';
-import 'package:news/features/news/data/models/article_model.dart';
+import 'package:news/features/news/data/models/news/news_model.dart';
 
 abstract class NewsRemoteDataSource {
-  Future<List<ArticleModel>> getNews();
+  Future<List<NewsModel>> getNews();
 }
 
 class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
@@ -15,7 +15,7 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
   NewsRemoteDataSourceImpl(this._dio);
 
   @override
-  Future<List<ArticleModel>> getNews() async {
+  Future<List<NewsModel>> getNews() async {
     try {
       await Future.delayed(const Duration(seconds: 3));
 
@@ -27,9 +27,9 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
         },
       );
 
-      final response = BaseResponse<List<ArticleModel>>.fromJson(result.data, (json) {
+      final response = BaseResponse<List<NewsModel>>.fromJson(result.data, (json) {
         final rawList = json as List<dynamic>;
-        return rawList.map((item) => ArticleModel.fromJson(item)).toList();
+        return rawList.map((item) => NewsModel.fromJson(item)).toList();
       });
 
       if (response.status == 'ok' && response.data != null) {

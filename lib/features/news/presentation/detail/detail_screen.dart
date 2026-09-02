@@ -6,13 +6,13 @@ import 'package:news/core/utils/ext/context_ext.dart';
 import 'package:news/core/utils/url_launcher_helper.dart';
 import 'package:news/core/widgets/filled_button.dart';
 import 'package:news/core/widgets/network_image.dart';
-import 'package:news/features/news/domain/entities/article.dart';
+import 'package:news/features/news/domain/entities/news_entity.dart';
 import 'package:news/navigation.dart';
 
 class DetailScreen extends StatelessWidget {
-  final Article article;
+  final NewsEntity news;
 
-  const DetailScreen({super.key, required this.article});
+  const DetailScreen({super.key, required this.news});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class DetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MyNetworkImage(
-              imageUrl: article.image,
+              imageUrl: news.image,
               width: double.infinity,
               height: 200.h,
               fit: BoxFit.cover,
@@ -45,7 +45,7 @@ class DetailScreen extends StatelessWidget {
             ),
             16.verticalSpace,
             Text(
-              article.title,
+              news.title,
               style: context.textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -61,16 +61,16 @@ class DetailScreen extends StatelessWidget {
                 4.horizontalSpace,
                 Expanded(
                   child: Text(
-                    article.author.isEmpty
+                    news.author.isEmpty
                         ? context.getString.lbl_unknown
-                        : article.author,
+                        : news.author,
                     style: context.textTheme.bodySmall?.copyWith(
                       color: context.colorScheme.primary,
                     ),
                   ),
                 ),
                 Text(
-                  context.formatDate(article.date),
+                  context.formatDate(news.date),
                   style: context.textTheme.bodySmall?.copyWith(
                     color: context.colorScheme.outline,
                   ),
@@ -78,12 +78,12 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
             16.verticalSpace,
-            Text(article.desc, style: context.textTheme.bodyLarge),
+            Text(news.desc, style: context.textTheme.bodyLarge),
             24.verticalSpace,
             MyFilledButton(
               label: context.getString.btn_read_more,
               isFillMaxWidth: true,
-              onPressed: () => UrlLauncherHelper.openWebPage(context, article.url),
+              onPressed: () => UrlLauncherHelper.openWebPage(context, news.url),
             ),
           ],
         ),
