@@ -36,6 +36,15 @@ class StringsId extends Strings {
   String get lbl_please_wait => 'Harap tunggu...';
 
   @override
+  String get lbl_news_empty => 'News is empty';
+
+  @override
+  String get lbl_unknown => 'Tidak di ketahui';
+
+  @override
+  String get lbl_setting => 'Pengaturan';
+
+  @override
   String get hint_username => 'Masukkan Nama Pengguna';
 
   @override
@@ -46,6 +55,18 @@ class StringsId extends Strings {
 
   @override
   String get btn_register => 'Daftar';
+
+  @override
+  String get btn_retry => 'Coba Lagi';
+
+  @override
+  String get btn_read_more => 'Baca Selengkapnya';
+
+  @override
+  String get btn_logout => 'Keluar';
+
+  @override
+  String get btn_cancel => 'Batal';
 
   @override
   String get msg_username_empty => 'Nama pengguna kosong';
@@ -81,4 +102,10 @@ class StringsId extends Strings {
 
   @override
   String get msg_register_failure => 'Nama pengguna sudah terdaftar';
+
+  @override
+  String get msg_url_invalid => 'URL tidak sesuai';
+
+  @override
+  String get msg_logout => 'Apakah anda yakin ingin keluar?';
 }

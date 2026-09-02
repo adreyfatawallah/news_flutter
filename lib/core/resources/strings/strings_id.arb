@@ -8,12 +8,19 @@
   "lbl_password": "Kata Sandi",
   "lbl_confirm_password": "Konfirmasi Kata Sandi",
   "lbl_please_wait": "Harap tunggu...",
+  "lbl_news_empty": "News is empty",
+  "lbl_unknown": "Tidak di ketahui",
+  "lbl_setting": "Pengaturan",
 
   "hint_username": "Masukkan Nama Pengguna",
   "hint_password": "Masukkan Kata Sandi",
 
   "btn_login": "Masuk",
   "btn_register": "Daftar",
+  "btn_retry": "Coba Lagi",
+  "btn_read_more": "Baca Selengkapnya",
+  "btn_logout": "Keluar",
+  "btn_cancel": "Batal",
 
   "msg_username_empty": "Nama pengguna kosong",
   "msg_username_not_valid": "Nama pengguna minimal 3 karakter",
@@ -32,5 +39,7 @@
   },
   "msg_login_failure": "Nama pengguna atau kata sandi tidak sesuai",
   "msg_register_success": "Daftar berhasil",
-  "msg_register_failure": "Nama pengguna sudah terdaftar"
+  "msg_register_failure": "Nama pengguna sudah terdaftar",
+  "msg_url_invalid": "URL tidak sesuai",
+  "msg_logout": "Apakah anda yakin ingin keluar?"
 }

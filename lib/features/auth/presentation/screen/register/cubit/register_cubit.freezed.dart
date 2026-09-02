@@ -125,12 +125,12 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( bool result)?  success,TResult Function()?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( RegisterEntity registerEntity)?  success,TResult Function()?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
 return loading();case _Success() when success != null:
-return success(_that.result);case _Failure() when failure != null:
+return success(_that.registerEntity);case _Failure() when failure != null:
 return failure();case _:
   return orElse();
 
@@ -149,12 +149,12 @@ return failure();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( bool result)  success,required TResult Function()  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( RegisterEntity registerEntity)  success,required TResult Function()  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loading():
 return loading();case _Success():
-return success(_that.result);case _Failure():
+return success(_that.registerEntity);case _Failure():
 return failure();}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -169,12 +169,12 @@ return failure();}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( bool result)?  success,TResult? Function()?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( RegisterEntity registerEntity)?  success,TResult? Function()?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
 return loading();case _Success() when success != null:
-return success(_that.result);case _Failure() when failure != null:
+return success(_that.registerEntity);case _Failure() when failure != null:
 return failure();case _:
   return null;
 
@@ -251,10 +251,10 @@ String toString() {
 
 
 class _Success implements RegisterState {
-  const _Success(this.result);
+  const _Success(this.registerEntity);
   
 
- final  bool result;
+ final  RegisterEntity registerEntity;
 
 /// Create a copy of RegisterState
 /// with the given fields replaced by the non-null parameter values.
@@ -266,16 +266,16 @@ _$SuccessCopyWith<_Success> get copyWith => __$SuccessCopyWithImpl<_Success>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&(identical(other.result, result) || other.result == result));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&(identical(other.registerEntity, registerEntity) || other.registerEntity == registerEntity));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,result);
+int get hashCode => Object.hash(runtimeType,registerEntity);
 
 @override
 String toString() {
-  return 'RegisterState.success(result: $result)';
+  return 'RegisterState.success(registerEntity: $registerEntity)';
 }
 
 
@@ -286,7 +286,7 @@ abstract mixin class _$SuccessCopyWith<$Res> implements $RegisterStateCopyWith<$
   factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) = __$SuccessCopyWithImpl;
 @useResult
 $Res call({
- bool result
+ RegisterEntity registerEntity
 });
 
 
@@ -303,10 +303,10 @@ class __$SuccessCopyWithImpl<$Res>
 
 /// Create a copy of RegisterState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? result = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? registerEntity = null,}) {
   return _then(_Success(
-null == result ? _self.result : result // ignore: cast_nullable_to_non_nullable
-as bool,
+null == registerEntity ? _self.registerEntity : registerEntity // ignore: cast_nullable_to_non_nullable
+as RegisterEntity,
   ));
 }
 

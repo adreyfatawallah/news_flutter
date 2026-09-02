@@ -8,7 +8,7 @@ import 'package:news/core/utils/mixin/validation_mixin.dart';
 import 'package:news/core/widgets/filled_button.dart';
 import 'package:news/core/widgets/loading_dialog.dart';
 import 'package:news/core/widgets/top_notification.dart';
-import 'package:news/features/auth/domain/usecases/post_register.dart';
+import 'package:news/features/auth/domain/usecases/register.dart';
 import 'package:news/features/auth/presentation/screen/register/cubit/register_cubit.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -79,8 +79,8 @@ class _RegisterScreenState extends State<RegisterScreen> with ValidationMixin {
         listener: (context, state) {
           state.maybeWhen(
             loading: () => LoadingDialog.show(context),
-            success: (isSuccess) =>
-                _onRegisterResult(context, isSuccess: isSuccess),
+            success: (register) =>
+                _onRegisterResult(context, isSuccess: register.isSuccess),
             failure: () => _onRegisterResult(context, isFailure: true),
             orElse: () {},
           );

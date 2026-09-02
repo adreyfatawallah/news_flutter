@@ -5,21 +5,30 @@ import 'package:news/core/utils/ext/context_ext.dart';
 import 'package:news/features/settings/presentation/cubit/settings_cubit.dart';
 
 class ToggleTheme extends StatelessWidget {
-  const ToggleTheme({super.key});
+  final bool useLabel;
+  final double iconSize;
+  final double spaceBetween;
+
+  const ToggleTheme({
+    super.key,
+    required this.useLabel,
+    required this.iconSize,
+    required this.spaceBetween,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final iconSize = 14.r;
-
     return IntrinsicHeight(
       child: Row(
         mainAxisSize: .min,
         children: [
-          Text(
-            context.getString.lbl_theme,
-            style: context.textTheme.labelMedium,
-          ),
-          4.horizontalSpace,
+          if (useLabel) ...[
+            Text(
+              context.getString.lbl_theme,
+              style: context.textTheme.labelMedium,
+            ),
+            4.horizontalSpace,
+          ],
           InkWell(
             onTap: () =>
                 context.read<SettingsCubit>().changeTheme(Brightness.light),
@@ -27,7 +36,9 @@ class ToggleTheme extends StatelessWidget {
                 ? Icon(Icons.light_mode, size: iconSize)
                 : Icon(Icons.light_mode_outlined, size: iconSize),
           ),
+          spaceBetween.horizontalSpace,
           const VerticalDivider(),
+          spaceBetween.horizontalSpace,
           InkWell(
             onTap: () =>
                 context.read<SettingsCubit>().changeTheme(Brightness.dark),

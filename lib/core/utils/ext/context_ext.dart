@@ -5,6 +5,8 @@ import 'package:news/core/resources/strings/generated/strings.dart';
 extension ContextExt on BuildContext {
   Strings get getString => Strings.of(this)!;
 
+  Locale get currentLocale => Localizations.localeOf(this);
+
   Brightness get theme => Theme.of(this).brightness;
 
   TextTheme get textTheme => Theme.of(this).textTheme;
@@ -12,6 +14,8 @@ extension ContextExt on BuildContext {
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
 
   Size get screenSize => MediaQuery.of(this).size;
+  
+  ScaffoldMessengerState get snackbar => ScaffoldMessenger.of(this);
 
   String formatDate(String date) {
     try {

@@ -36,6 +36,15 @@ class StringsEn extends Strings {
   String get lbl_please_wait => 'Please wait...';
 
   @override
+  String get lbl_news_empty => 'News is empty';
+
+  @override
+  String get lbl_unknown => 'Unknown';
+
+  @override
+  String get lbl_setting => 'Setting';
+
+  @override
   String get hint_username => 'Enter Username';
 
   @override
@@ -46,6 +55,18 @@ class StringsEn extends Strings {
 
   @override
   String get btn_register => 'Register';
+
+  @override
+  String get btn_retry => 'Retry';
+
+  @override
+  String get btn_read_more => 'Read More';
+
+  @override
+  String get btn_logout => 'Logout';
+
+  @override
+  String get btn_cancel => 'Cancel';
 
   @override
   String get msg_username_empty => 'Username is empty';
@@ -81,4 +102,10 @@ class StringsEn extends Strings {
 
   @override
   String get msg_register_failure => 'Username already exist';
+
+  @override
+  String get msg_url_invalid => 'URL invalid';
+
+  @override
+  String get msg_logout => 'Are you sure you want to logout?';
 }

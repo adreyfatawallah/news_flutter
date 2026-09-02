@@ -11,21 +11,21 @@ import 'package:news/features/auth/domain/entities/item_language.dart';
 import 'package:news/features/settings/presentation/cubit/settings_cubit.dart';
 
 class LanguageWidget extends StatelessWidget {
-  const LanguageWidget({super.key});
+  final Widget child;
+
+  const LanguageWidget({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
-    final langCode = Localizations.localeOf(context).languageCode;
-
     final listLanguage = [
       ItemLanguage(
         value: MyConst.langCodeEn,
-        icon: MyIcons.getFlag('en'),
+        flag: MyIcons.getFlag('en'),
         label: context.getString.lbl_english,
       ),
       ItemLanguage(
         value: MyConst.langCodeId,
-        icon: MyIcons.getFlag('id'),
+        flag: MyIcons.getFlag('id'),
         label: context.getString.lbl_indonesia,
       ),
     ];
@@ -51,24 +51,14 @@ class LanguageWidget extends StatelessWidget {
           child: Row(
             mainAxisSize: .min,
             children: [
-              SvgPicture.asset(listLanguage[index].icon),
+              SvgPicture.asset(listLanguage[index].flag),
               8.horizontalSpace,
               Text(listLanguage[index].label),
             ],
           ),
         ),
       ),
-      child: Row(
-        mainAxisSize: .min,
-        children: [
-          Text(
-            context.getString.lbl_language,
-            style: context.textTheme.labelMedium,
-          ),
-          4.horizontalSpace,
-          SvgPicture.asset(MyIcons.getFlag(langCode)),
-        ],
-      ),
+      child: child,
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:news/features/auth/data/models/user/user_model.dart';
 import 'package:news/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:news/features/auth/domain/repositories/auth_repository.dart';
 import 'package:news/features/auth/domain/usecases/login.dart';
-import 'package:news/features/auth/domain/usecases/post_register.dart';
+import 'package:news/features/auth/domain/usecases/register.dart';
 import 'package:news/features/auth/presentation/screen/login/cubit/login_cubit.dart';
 import 'package:news/features/auth/presentation/screen/register/cubit/register_cubit.dart';
 import 'package:news/injection.dart';
@@ -33,7 +33,7 @@ Future<void> authInjection() async {
 
   // usecase
   inject.registerLazySingleton(() => Login(inject()));
-  inject.registerLazySingleton(() => PostRegister(inject()));
+  inject.registerLazySingleton(() => Register(inject()));
 
   // cubit
   inject.registerFactory(() => LoginCubit(inject()));

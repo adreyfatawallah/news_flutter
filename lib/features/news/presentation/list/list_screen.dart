@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news/core/resources/dimens.dart';
+import 'package:news/core/utils/const.dart';
 import 'package:news/core/utils/ext/context_ext.dart';
 import 'package:news/core/widgets/filled_button.dart';
 import 'package:news/core/widgets/network_image.dart';
@@ -33,7 +34,7 @@ class _ListScreenState extends State<ListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('News'),
+        title: const Text(MyConst.appName),
         actions: [
           IconButton(
             onPressed: () {
@@ -56,55 +57,53 @@ class _ListScreenState extends State<ListScreen> {
         child: BlocBuilder<ListCubit, ListState>(
           builder: (context, state) {
             return state.maybeWhen(
-              loading: () => ListView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                children: [SizedBox(height: context.screenSize.height * 0.4)],
-              ),
+              loading: () => _defaultList(null),
               success: (news) {
                 if (news.isEmpty) {
-                  return ListView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    children: [
-                      SizedBox(height: 200.h),
-                      const Center(child: Text('Tidak ada berita.')),
-                    ],
+                  return _defaultList(
+                    Center(
+                      child: Text(
+                        context.getString.lbl_news_empty,
+                        style: context.textTheme.labelLarge,
+                      ),
+                    ),
                   );
                 }
 
                 return ListView.separated(
                   physics: const AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16.w,
-                    vertical: 12.h,
-                  ),
+                  padding: .all(16.r),
                   itemCount: news.length,
-                  separatorBuilder: (context, index) => 12.verticalSpace,
+                  separatorBuilder: (context, index) => 14.verticalSpace,
                   itemBuilder: (context, index) {
                     final item = news[index];
                     return _itemNews(item);
                   },
                 );
               },
-              failure: () => ListView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                children: [
-                  SizedBox(height: 200.h),
-                  Center(
-                    child: MyFilledButton(
-                      label: 'Coba Lagi',
-                      onPressed: () => _refreshKey.currentState?.show(),
-                    ),
+              failure: () => _defaultList(
+                Center(
+                  child: MyFilledButton(
+                    label: context.getString.btn_retry,
+                    onPressed: () => _refreshKey.currentState?.show(),
                   ),
-                ],
+                ),
               ),
-              orElse: () => ListView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                children: const [],
-              ),
+              orElse: () => _defaultList(null),
             );
           },
         ),
       ),
+    );
+  }
+
+  Widget _defaultList(Widget? child) {
+    return ListView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      children: [
+        SizedBox(height: 200.h),
+        ?child,
+      ],
     );
   }
 
@@ -119,7 +118,7 @@ class _ListScreenState extends State<ListScreen> {
         children: [
           MyNetworkImage(
             imageUrl: item.image,
-            width: 100.w,
+            width: 120.w,
             height: 65.h,
             fit: BoxFit.cover,
             borderRadius: MyDimens.borderRadius,

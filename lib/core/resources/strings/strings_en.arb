@@ -8,12 +8,19 @@
   "lbl_password": "Password",
   "lbl_confirm_password": "Confirm Password",
   "lbl_please_wait": "Please wait...",
+  "lbl_news_empty": "News is empty",
+  "lbl_unknown": "Unknown",
+  "lbl_setting": "Setting",
 
   "hint_username": "Enter Username",
   "hint_password": "Enter Password",
 
   "btn_login": "Login",
   "btn_register": "Register",
+  "btn_retry": "Retry",
+  "btn_read_more": "Read More",
+  "btn_logout": "Logout",
+  "btn_cancel": "Cancel",
 
   "msg_username_empty": "Username is empty",
   "msg_username_not_valid": "Username must be at least 3 characters",
@@ -32,5 +39,7 @@
   },
   "msg_login_failure": "Username or password does not match",
   "msg_register_success": "Register success",
-  "msg_register_failure": "Username already exist"
+  "msg_register_failure": "Username already exist",
+  "msg_url_invalid": "URL invalid",
+  "msg_logout": "Are you sure you want to logout?"
 }

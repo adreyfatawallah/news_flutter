@@ -2,7 +2,7 @@ import 'package:hive_ce/hive.dart';
 import 'package:news/features/auth/data/models/login_model.dart';
 import 'package:news/features/auth/data/models/user/user_model.dart';
 import 'package:news/features/auth/domain/usecases/login.dart';
-import 'package:news/features/auth/domain/usecases/post_register.dart';
+import 'package:news/features/auth/domain/usecases/register.dart';
 import 'package:uuid/uuid.dart';
 
 abstract class AuthLocalDataSource {
@@ -57,10 +57,10 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
 
       final user = _userBox.get(username);
       if (user == null) {
-        LoginModel(isSuccess: false);
+        return LoginModel(isSuccess: false);
       }
 
-      if (user!.password != password) {
+      if (user.password != password) {
         return LoginModel(isSuccess: false);
       }
 

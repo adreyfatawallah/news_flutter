@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:news/features/news/core/api.dart';
+import 'package:news/core/network/api.dart';
 
 Dio setupDio() {
   final options = BaseOptions(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:news/core/resources/icons.dart';
 import 'package:news/core/resources/styles/text_field_style.dart';
 import 'package:news/core/utils/ext/context_ext.dart';
 import 'package:news/core/widgets/filled_button.dart';
@@ -10,8 +12,8 @@ import 'package:news/core/widgets/outlined_button.dart';
 import 'package:news/core/widgets/top_notification.dart';
 import 'package:news/features/auth/domain/usecases/login.dart';
 import 'package:news/features/auth/presentation/screen/login/cubit/login_cubit.dart';
-import 'package:news/features/auth/presentation/widgets/language_widget.dart';
-import 'package:news/features/auth/presentation/widgets/toggle_theme.dart';
+import 'package:news/core/widgets/language_widget.dart';
+import 'package:news/core/widgets/toggle_theme.dart';
 import 'package:news/features/settings/presentation/cubit/settings_cubit.dart';
 import 'package:news/navigation.dart';
 
@@ -86,9 +88,30 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: .symmetric(horizontal: 36.w, vertical: 16.h),
             child: Column(
               children: [
-                const Row(
+                Row(
                   mainAxisAlignment: .spaceBetween,
-                  children: [LanguageWidget(), ToggleTheme()],
+                  children: [
+                    LanguageWidget(
+                      child: Row(
+                        mainAxisSize: .min,
+                        children: [
+                          Text(
+                            context.getString.lbl_language,
+                            style: context.textTheme.labelMedium,
+                          ),
+                          4.horizontalSpace,
+                          SvgPicture.asset(
+                            MyIcons.getFlag(context.currentLocale.languageCode),
+                          ),
+                        ],
+                      ),
+                    ),
+                    ToggleTheme(
+                      useLabel: true,
+                      iconSize: 14.r,
+                      spaceBetween: 0,
+                    ),
+                  ],
                 ),
                 Expanded(
                   child: Column(

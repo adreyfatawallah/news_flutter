@@ -1,7 +1,7 @@
 class ItemLanguage {
   final String value;
-  final String icon;
+  final String flag;
   final String label;
 
-  ItemLanguage({required this.value, required this.icon, required this.label});
+  ItemLanguage({required this.value, required this.flag, required this.label});
 }

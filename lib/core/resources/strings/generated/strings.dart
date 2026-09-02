@@ -151,6 +151,24 @@ abstract class Strings {
   /// **'Please wait...'**
   String get lbl_please_wait;
 
+  /// No description provided for @lbl_news_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'News is empty'**
+  String get lbl_news_empty;
+
+  /// No description provided for @lbl_unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get lbl_unknown;
+
+  /// No description provided for @lbl_setting.
+  ///
+  /// In en, this message translates to:
+  /// **'Setting'**
+  String get lbl_setting;
+
   /// No description provided for @hint_username.
   ///
   /// In en, this message translates to:
@@ -174,6 +192,30 @@ abstract class Strings {
   /// In en, this message translates to:
   /// **'Register'**
   String get btn_register;
+
+  /// No description provided for @btn_retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get btn_retry;
+
+  /// No description provided for @btn_read_more.
+  ///
+  /// In en, this message translates to:
+  /// **'Read More'**
+  String get btn_read_more;
+
+  /// No description provided for @btn_logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get btn_logout;
+
+  /// No description provided for @btn_cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get btn_cancel;
 
   /// No description provided for @msg_username_empty.
   ///
@@ -240,6 +282,18 @@ abstract class Strings {
   /// In en, this message translates to:
   /// **'Username already exist'**
   String get msg_register_failure;
+
+  /// No description provided for @msg_url_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'URL invalid'**
+  String get msg_url_invalid;
+
+  /// No description provided for @msg_logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to logout?'**
+  String get msg_logout;
 }
 
 class _StringsDelegate extends LocalizationsDelegate<Strings> {

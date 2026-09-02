@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:news/core/error/exception.dart';
-import 'package:news/features/news/core/api.dart';
-import 'package:news/features/news/core/base_response.dart';
+import 'package:news/core/network/api.dart';
+import 'package:news/core/network/base_response.dart';
 import 'package:news/features/news/data/models/article_model.dart';
 
 abstract class NewsRemoteDataSource {

@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:news/core/resources/dimens.dart';
 import 'package:news/core/utils/ext/context_ext.dart';
+import 'package:news/core/utils/url_launcher_helper.dart';
 import 'package:news/core/widgets/filled_button.dart';
 import 'package:news/core/widgets/network_image.dart';
 import 'package:news/features/news/domain/entities/article.dart';
 import 'package:news/navigation.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class DetailScreen extends StatelessWidget {
   final Article article;
@@ -61,7 +61,9 @@ class DetailScreen extends StatelessWidget {
                 4.horizontalSpace,
                 Expanded(
                   child: Text(
-                    article.author.isEmpty ? 'Unknown' : article.author,
+                    article.author.isEmpty
+                        ? context.getString.lbl_unknown
+                        : article.author,
                     style: context.textTheme.bodySmall?.copyWith(
                       color: context.colorScheme.primary,
                     ),
@@ -76,38 +78,13 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
             16.verticalSpace,
-            Text(
-              article.desc,
-              style: context.textTheme.bodyLarge,
-            ),
+            Text(article.desc, style: context.textTheme.bodyLarge),
             24.verticalSpace,
             MyFilledButton(
-              label: 'Baca Selengkapnya',
+              label: context.getString.btn_read_more,
               isFillMaxWidth: true,
-              onPressed: () async {
-                debugPrint('Launching URL: ${article.url}');
-                final url = Uri.tryParse(article.url);
-                if (url == null) {
-                  if (context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('URL tidak valid')),
-                    );
-                  }
-                  return;
-                }
-                try {
-                  await launchUrl(url, mode: LaunchMode.externalApplication);
-                } catch (e) {
-                  debugPrint('Could not launch $url: $e');
-                  if (context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Tidak dapat membuka link')),
-                    );
-                  }
-                }
-              },
+              onPressed: () => UrlLauncherHelper.openWebPage(context, article.url),
             ),
-            12.verticalSpace,
           ],
         ),
       ),
