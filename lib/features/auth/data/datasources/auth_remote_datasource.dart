@@ -1,5 +1,4 @@
 import 'package:news/core/error/exception.dart';
-import 'package:news/core/error/failure.dart';
 import 'package:news/core/utils/const.dart';
 import 'package:news/features/auth/data/models/login_model.dart';
 import 'package:news/features/auth/domain/usecases/login.dart';

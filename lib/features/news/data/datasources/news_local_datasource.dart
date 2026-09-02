@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:news/core/error/exception.dart';
-import 'package:news/core/error/failure.dart';
 import 'package:news/features/news/data/models/news/news_model.dart';
 
 abstract class NewsLocalDataSource {
