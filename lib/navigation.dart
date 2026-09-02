@@ -37,9 +37,10 @@ class Navigation {
 
   late final router = GoRouter(
     initialLocation: Nav.home.path,
-    refreshListenable: GoRouterRefreshStream(
-      settings.stream.map((state) => state.isAuth).distinct(),
-    ),
+    refreshListenable: GoRouterRefreshStream(settings.stream),
+    // refreshListenable: GoRouterRefreshStream(
+    //   settings.stream.map((state) => state.isAuth).distinct(),
+    // ),
     redirect: (context, route) {
       final isAuthenticated = settings.state.isAuth;
       final isGoingToLogin = route.matchedLocation == Nav.login.path;
